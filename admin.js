@@ -93,6 +93,7 @@ adminSignInBtn.addEventListener("click", async () => {
     await signInWithPopup(auth, provider);
   } catch (error) {
     adminStatus.textContent = formatAuthError(error);
+    adminStatus.textContent = `Sign in failed: ${error.message}`;
   }
 });
 
