@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CourtVision Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="layout" style="max-width: 980px; margin-top: 1.5rem;">
+      <section class="card">
+        <h2>Admin Settings</h2>
+        <p id="adminStatus">Sign in with Google to access admin controls.</p>
+        <div class="access-row">
+          <button id="adminSignInBtn" class="btn btn-primary">Sign in with Google</button>
+          <button id="adminSignOutBtn" class="btn btn-ghost hidden">Sign out</button>
+          <a class="btn btn-ghost" href="/">Back to site</a>
+        </div>
+      </section>
+
+      <section class="card" id="adminPanel" style="display:none;">
+        <div class="section-head">
+          <h2>Billing Links</h2>
+          <p>These are remembered in Firestore and used by the customer-facing site.</p>
+        </div>
+        <div class="pricing-grid">
+          <label>Starter ($5) Link<input id="starterLink" class="input" /></label>
+          <label>Pro ($10) Link<input id="proLink" class="input" /></label>
+          <label>Elite ($15) Link<input id="eliteLink" class="input" /></label>
+        </div>
+        <label style="display:block; margin-top:0.7rem;">Cancel Portal URL<input id="cancelPortalUrl" class="input" /></label>
+      </section>
+
+      <section class="card" id="predictionsPanel" style="display:none;">
+        <div class="section-head">
+          <h2>Predictions Content</h2>
+          <p>Edit JSON arrays. Each item should have matchup, details, confidence.</p>
+        </div>
+        <label>Starter JSON<textarea id="starterPredictions" class="textarea"></textarea></label>
+        <label>Pro JSON<textarea id="proPredictions" class="textarea"></textarea></label>
+        <label>Elite JSON<textarea id="elitePredictions" class="textarea"></textarea></label>
+        <button id="saveBtn" class="btn btn-primary" style="margin-top: 0.8rem;">Save Settings</button>
+      </section>
+    </main>
+
+    <script type="module" src="admin.js"></script>
+  </body>
+</html>
