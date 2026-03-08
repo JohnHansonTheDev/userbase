@@ -16,6 +16,12 @@ A Vercel-deployable NBA picks site with:
 ## Firebase setup
 
 1. Create Firebase project (or use the included one in `firebase-client.js`).
+2. Enable **Authentication → Sign-in method → Google**.
+3. Add your domains under **Authentication → Settings → Authorized domains**:
+   - `localhost` (for local development)
+   - your Vercel production domain
+4. Create Firestore.
+5. In `admin.js`, update `ADMIN_EMAILS` with your Gmail.
 2. Enable **Authentication → Google**.
 3. Create Firestore.
 4. In `admin.js`, update `ADMIN_EMAILS` with your Gmail.
@@ -84,6 +90,14 @@ service cloud.firestore {
   }
 }
 ```
+
+## Troubleshooting
+
+If sign-in shows `Firebase: Error (auth/configuration-not-found)`:
+
+1. Verify Google provider is enabled in Firebase Authentication.
+2. Verify your current domain is listed in Authorized domains.
+3. Confirm the Firebase project in `firebase-client.js` is the project where Auth is configured.
 
 ## Deploy on Vercel
 

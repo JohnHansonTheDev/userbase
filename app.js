@@ -93,6 +93,14 @@ const purchaseButtons = document.querySelectorAll(".purchase-btn");
 
 let appConfig = structuredClone(defaults);
 
+function formatAuthError(error) {
+  if (error?.code === "auth/configuration-not-found") {
+    return "Google sign-in is not configured in Firebase yet. In Firebase Console, enable Authentication → Sign-in method → Google and add your Vercel domain under Authentication → Settings → Authorized domains.";
+  }
+
+  return `Google sign-in failed: ${error.message}`;
+}
+
 function renderPredictions(tier = "none") {
   const list = appConfig.predictionsByTier[tier] || appConfig.predictionsByTier.none;
   predictionsContainer.innerHTML = list
@@ -162,6 +170,7 @@ signInBtn.addEventListener("click", async () => {
   try {
     await signInWithPopup(auth, provider);
   } catch (error) {
+    authStatus.textContent = formatAuthError(error);
     authStatus.textContent = `Google sign-in failed: ${error.message}`;
   }
 });

@@ -43,6 +43,14 @@ const starterPredictions = document.getElementById("starterPredictions");
 const proPredictions = document.getElementById("proPredictions");
 const elitePredictions = document.getElementById("elitePredictions");
 
+function formatAuthError(error) {
+  if (error?.code === "auth/configuration-not-found") {
+    return "Google sign-in is not configured in Firebase yet. Enable Authentication → Sign-in method → Google and add your domain under Authentication → Settings → Authorized domains.";
+  }
+
+  return `Sign in failed: ${error.message}`;
+}
+
 function isAllowedAdmin(email) {
   return ADMIN_EMAILS.includes(email);
 }
@@ -84,6 +92,7 @@ adminSignInBtn.addEventListener("click", async () => {
   try {
     await signInWithPopup(auth, provider);
   } catch (error) {
+    adminStatus.textContent = formatAuthError(error);
     adminStatus.textContent = `Sign in failed: ${error.message}`;
   }
 });
