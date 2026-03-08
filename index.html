@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CourtVision Pro | NBA Predictions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+
+    <header class="site-header">
+      <div class="brand">
+        <span class="brand-pill">🏀</span>
+        <div>
+          <h1>CourtVision Pro</h1>
+          <p>AI-Assisted NBA Game Predictions</p>
+        </div>
+      </div>
+      <nav>
+        <button id="signInBtn" class="btn btn-primary">Sign in with Google</button>
+        <a href="/admin" class="btn btn-ghost">Admin</a>
+        <button id="signOutBtn" class="btn btn-ghost hidden">Sign out</button>
+      </nav>
+    </header>
+
+    <main class="layout">
+      <section class="card hero">
+        <h2>Predict smarter. Win your week.</h2>
+        <p>
+          Join with Gmail, choose your subscription tier, and unlock our NBA game predictions with confidence levels,
+          matchup analysis, and model notes.
+        </p>
+        <div class="stats-grid">
+          <article>
+            <h3>76%</h3>
+            <p>Last 30-day model hit rate</p>
+          </article>
+          <article>
+            <h3>Daily</h3>
+            <p>Updated predictions before tip-off</p>
+          </article>
+          <article>
+            <h3>3 Tiers</h3>
+            <p>Starter, Pro, and Elite insights</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="card" id="pricing">
+        <div class="section-head">
+          <h2>Subscription tiers</h2>
+          <p>Choose what level of detail you want.</p>
+        </div>
+        <div class="pricing-grid">
+          <article class="tier">
+            <p class="tier-name">Starter</p>
+            <h3>$5<span>/month</span></h3>
+            <ul>
+              <li>Top 2 picks per day</li>
+              <li>Win probability %</li>
+              <li>Simple matchup notes</li>
+            </ul>
+            <button class="btn btn-primary purchase-btn" data-tier="starter">Buy Starter</button>
+          </article>
+          <article class="tier tier-highlight">
+            <p class="tier-name">Pro</p>
+            <h3>$10<span>/month</span></h3>
+            <ul>
+              <li>All daily picks</li>
+              <li>Spread + total lean</li>
+              <li>Injury impact model notes</li>
+            </ul>
+            <button class="btn btn-primary purchase-btn" data-tier="pro">Buy Pro</button>
+          </article>
+          <article class="tier">
+            <p class="tier-name">Elite</p>
+            <h3>$15<span>/month</span></h3>
+            <ul>
+              <li>Everything in Pro</li>
+              <li>High-confidence alerts</li>
+              <li>Line movement commentary</li>
+            </ul>
+            <button class="btn btn-primary purchase-btn" data-tier="elite">Buy Elite</button>
+          </article>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="section-head">
+          <h2>Your access</h2>
+          <p id="authStatus">Sign in with Google to activate your account.</p>
+        </div>
+        <div class="access-row">
+          <span class="badge" id="activeTierBadge">No active plan</span>
+          <a id="cancelLink" class="btn btn-ghost hidden" target="_blank" rel="noreferrer">Cancel subscription</a>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="section-head">
+          <h2>Tonight's NBA predictions</h2>
+          <p>Predictions shown are based on your current subscription tier.</p>
+        </div>
+        <div id="predictions" class="predictions"></div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Built for Vercel • Firebase Auth + Firestore + Stripe Payment Links</p>
+    </footer>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
