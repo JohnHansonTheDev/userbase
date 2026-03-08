@@ -184,6 +184,8 @@ purchaseButtons.forEach((btn) => {
 });
 
 onAuthStateChanged(auth, async (user) => {
+  currentUser = user;
+
   if (!user) {
     authStatus.textContent = "Sign in with Google to activate your account.";
     signInBtn.classList.remove("hidden");
@@ -198,6 +200,8 @@ onAuthStateChanged(auth, async (user) => {
   signOutBtn.classList.remove("hidden");
   cancelLink.classList.remove("hidden");
   cancelLink.href = appConfig.billing.cancelPortalUrl;
+  cancelLink.href = cancelPortalUrl;
+
   authStatus.textContent = `Signed in as ${user.email}.`;
 
   const pendingTier = normalizeTier(localStorage.getItem("cv_pending_tier"));
